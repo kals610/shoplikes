@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<title>인스타그램에 쇼핑을 더하다</title>
+<meta name="description" content="패션, 화장품, 쥬얼리, 매거진, 여행지, 가구···. 어떤 분야에도 모두 적용할 수 있는 단 하나의 완벽한 솔루션, 지금 바로 만나보세요!">
+<meta name="naver-site-verification" content="5dc99e880e0eaa1d5a41462731bceca770bb03bb"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+<link rel="stylesheet" href="https://vjs.zencdn.net/5.10.8/video-js.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400">
+<link rel="stylesheet" href="./@resources/css/jquery.mCustomScrollbar.min.css?time=20160923">
+<link rel="stylesheet" href="./@resources/css/loading.css?y=115">
+<link rel="stylesheet" href="./@resources/css/tagged.css?y=115">
+<link rel="stylesheet" href="./@resources/css/reset.css?y=115">
+
+<script type="text/javascript">
+//===========================================
+// global .
+//===========================================
+var TB = {};
+TB.lang			= 'ko';
+TB.SSsite		= 'http://develop-www.shoplik.es';
+TB.siteUrl 		= document.location.origin;
+TB.domain		= document.location.host;
+TB.pathname		= document.location.pathname;
+TB.originDomain = "http://develop-www.shoplik.es/pepnbirr";
+TB.pageType		= "shop";
+TB.searchWord	= "";
+// pepnbirr shop Infomation
+TB.shopInfo = {
+	"clientId":"92bb902ec4fc491fba8a9c0b54b8a6aa",
+	"isShopPage":1,
+	"shopPageUrl":"http://develop-www.shoplik.es/pepnbirr",
+	"shopInstagramUrl":"https://www.instagram.com/pepnbirr",
+	"shopAccessToken":"",
+	'shopInstaUserId':"2895963759",
+	'shopMallUrl':"http://naver.com",
+	'shopNo':"111",
+	'menuShow':"TRUE"
+};
+
+// user Information
+TB.userInfo = {
+		"userNo":"",
+		"userInstagramUserId":"",
+		"userName":"",
+		"userAccessToken":""
+};
+
+// for statistics
+TB.statistics = {
+	"shopNo":'111',
+	"referrer":document.referrer,
+	//"referrer":'http://naver.com',
+	"clientIp":'',
+	"expireMin":180,
+	"flatform":'p'
+};
+
+TB.share = {
+	'share':'',
+	'instagram_content_address':''
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="./@resources/js/localization.js?t=123"></script>
+</head>
+<body><div id="headerWrap">
+	<div class="header">
+
+		<div class="row" style="padding: 0px; height: 50px;">
+			<div class="col-md-4 col-xs-4" style="text-align: left;">
+
+				<h1 id="logo">
+					<p class="logo_title">
+						<img src="./@resources/img/btn_down.png" id="dropdown-more-shop">
+						pepnbirr					</p>
+				</h1>
+			</div>
+			<div class="col-md-4 col-xs-4" style="text-align: center;">
+				<div class="col-md-6 col-xs-6" style=" padding-top:5px; padding-bottom: 5px; text-align: right;">
+					<img src="./@resources/img/logo.jpg" height="40" class="img-border"/>
+				</div>
+				<div class="col-md-6 col-xs-6" style="text-align: left; padding-top:9px; padding-bottom: 9px; padding-left:0px;">
+					<div class="follow">
+						<button class="insta-follow follow-off">+ Follow</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xs-4" style="text-align: right;">
+				<div class="share">
+					<a href="javascript:openMainShare();"><img src="./@resources/img/share.png"></a>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+</div><!-- //headerWrap -->
+<div id="mainContents">
+	<div class="moreSch" style="display: block;" id="moreSch" data-direction='right'>
+		<img src="./@resources/img/btn_Sch.png">
+	</div>
+	<div class="gotop">
+		<i class="fa fa-angle-up"></i>
+	</div>
+	<div class="top_banner"><a href="#"><img src="./@resources/img/top_banner_img.png"/></a></div>
+	<div class="visual">
+		<h3 class="content">이제 인스타그램 이미지로 쇼핑이 가능합니다.<p id="line"></p>
+		</h3>
+		
+		<ul class="tb-feeds" id="tb-feeds-recent">
+			<li class="empty-content" style="display: none;">
+				<div class="empty-content-div">
+					<img src="./@resources/img/empty_like.png" class="empty-image">
+					<br><br>
+					<div class="empty-text">아직 좋아요를 누르신 이미지가 없네요!</div>
+				</div>
+				
+				<div class="popular-tag" style="display: none;">
+					<ul></ul>
+				</div>
+				
+			</li>
+			
+			<li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img01.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img02.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img03.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img04.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img05.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img06.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img07.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img08.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img09.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img10.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img11.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img12.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img13.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img14.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img15.png" class="tb-feed-img"/></a></li>
+            <li class="tb-feed" id="tb-feed-picture-clone"><a href=""><img src="./@resources/img/img16.png" class="tb-feed-img"/></a></li>
+<!--
+			<li class="tb-feed" id="tb-feed-video-clone">
+				<div class="btn_play">
+					<img src="./@resources/img/btn_play.png" />
+				</div>
+				<a href=""><img src="" class="tb-feed-img"/></a>
+			</li>
+-->
+		</ul>
+
+		<ul class="tb-feeds tb-margin" id="tb-feeds">
+		</ul>
+	</div><!-- //visual -->
+	<!--<div class="footer-loading">-->
+<!--		<div class="loader">-->
+<!--			<img src="./@resources/img/ajax-more.gif" width="100%"/>-->
+
+			<!-- <p>loading...</p> -->
+			<!-- <p>loading...</p> -->
+<!--		</div>-->
+<!--	</div>-->
+</div><!-- //mainContents -->
+<!-- content modal html -->
+<div id="tb-md-content" class="modal fade">
+  <div class="modal-dialog">
+
+	<!-- Modal content-->
+    <div class="modal-content custom-width">
+		<div class="modal-body">
+			<div class="md-prev">
+				<i class="fa fa-angle-left fa-5x"></i>
+			</div>
+			
+			<div class="md-padding">
+				<div class="md-top">
+					<img src="./@resources/img/carticon.png"/>
+					<span class="md-ment">원하는 상품을 클릭하시면, 해당 상품의 쇼핑 페이지로 이동합니다.</span>
+					<a href="#"><i class="fa fa-times-circle-o" data-target="#tb-md-content" data-dismiss="modal"></i></a>
+				</div>
+				<div class="md-left">
+					
+					<p id="tagged-item-point" class="tagged-item-point" style="display: none;" data-order="" data-link="" data-content_instagram_id=""></p>
+					<svg height="418" width="418" style="display:none;" class="svg-line" id="svg-line" data-order="">
+  						<line x1="100" y1="150" x2="200" y2="500" style="stroke:#fc1a1a;stroke-width:5px;stroke-opacity:0.65;fill:none;" stroke-linecap="round" />
+					</svg>
+					
+					
+					<div id="picture-goods">
+						<img src="./@resources/blank_image/418x418.gif" width="418" height="418" id="goods-image"/>
+					</div>
+					
+					<div id="video-goods">
+						<video id="videoPlayer" class="video-js" controls preload="auto" width="418" height="418" poster="./@resources/img/md_bigimg.png" data-setup="{}">
+							<source src="http://techslides.com/demos/sample-videos/small.mp4" type='video/mp4'>
+							<p class="vjs-no-js">No support video<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+						    </p>
+						</video>
+					</div>
+					<div class="icons-div-left">
+						<ul class="md-icons">
+							<li class="feed-like-action"><i class="fa fa-heart-o fa-like-off"></i></li>
+							<li class="icon-txt" id="like-cnt">0</li>
+							<li class="more-comment"><i class="fa fa-comment-o fa-custom-size"></i></li>
+							<li class="icon-txt" id="reply-cnt">675</li>
+						</ul>
+					</div>
+					
+					<div class="icons-div-right">
+						<ul class="share-icons">
+							<li><a href="javascript:share('twitter');"><img src="./@resources/img/twicon.png"></a></li>
+							<li><a href="javascript:share('facebook');"><img src="./@resources/img/fbicon.png"></a></li>
+							<!-- <li><a  href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonPin" style="cursor: pointer;" data-pin-custom="true" target="_blank"><img src="./@resources/img/pricon.png"></a></li> -->
+							<li><a href="javascript:share('kakaostory');"><img src="./@resources/img/ksicon.png"></a></li>
+							<li><a href="javascript:share('link');"><img src="./@resources/img/lnicon.png"></a></li>
+						</ul>
+					</div>
+
+					<div class="banner-content">
+						<iframe src="" id="banner-content-iframe" class="banner-content-iframe" scrolling="no"></iframe>
+					</div>
+
+					<div class="md-comment">
+						<div class="comment-area">
+						
+							<ul id="comment-template" style="display: none;">
+								<li class="re-img">
+									<img src="./@resources/blank_image/40x40.gif"/>
+								</li>
+								<li class="re-txt">
+									<a href="http://shoplik.es" target="_blank">
+										<b>shoplikes_official</b>
+									</a>
+									<p class="more-retxt-hash"></p>
+								</li>
+								<li class="re-date">5일전</li>
+							</ul>
+							
+
+						</div><!-- //comment-area -->
+					</div><!-- //md-comment -->
+					<div class="reply-input">
+						<form id="comment-write-form"><!--onsubmit="commentAction(); return false;"-->
+						<input type="text" id="comment-txt" placeholder="">
+						<button type="submit" class="reply-input-button">보내기</button>
+						</form>
+					</div><!-- //reply-input -->
+				</div><!-- //md-left -->
+				<div class="md-right">
+					<div class="tb-products-list">
+						<ul class="six-item">
+							<li class="margin-item" id="margin-item" style="display: none;">
+								<p class="tagged-item-new"></p>
+								<img src="">
+								<span></span>
+							</li>
+							
+							
+						</ul>
+					</div>
+					
+				</div><!-- //md-right -->
+				<div class="other-logo">
+					<a href="#"><img src="./@resources/img/pop-otherlogo.png" id="content-logo-image" /></a>
+				</div>
+			</div><!-- //md-padding -->
+			
+			<div class="md-next">
+				<i class="fa fa-angle-right fa-5x"></i>
+			</div>
+		</div><!-- //modal-body -->
+	</div><!-- //modal-content -->
+	<div class="morecontent-pop more-comment">
+		인스타그램 댓글 달기<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+	</div>
+  </div><!-- //modal-dialog -->
+  	<div class="md-twobuy">
+		<img src="./@resources/img/logo_pop.png" onClick="instaFollowEvent();"/>
+	</div>
+</div><!-- //content modal html -->
+
+
+
+<!-- share for shop url -->
+<div id="main-share" class="modal fade">
+	<div class="modal-dialog" style="width:500px; margin-top: 0px; display: block;">
+		<div class="share_open" id="share_open">
+			<img class="share_close" data-dismiss="modal" src="./@resources/img/share_close.png"/>
+			<ul>
+				<li><a href="javascript:MshareKakaoStory();"><img src="./@resources/img/share_story.png"/></a></li>
+				<li><a href="javascript:MshareTwitter();"><img src="./@resources/img/share_twitter.png"/></a></li>
+				<li><a href="javascript:MshareFacebook();"><img src="./@resources/img/share_facebook.png"/></a></li>
+				<li><a href="javascript:MshareMail();"><img src="./@resources/img/share_mail.png"/></a></li>
+				<li><a href="javascript:MshareUrl();"><img src="./@resources/img/share_link.png"/></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<!-- alert modal content -->
+<div id="alert-modal" class="modal fade">
+  <div class="modal-dialog" style="width: 350px;">
+    <div class="modal-content">
+      <div class="modal-header md-ns-color-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">알림</h4>
+      </div>
+      <div class="modal-body" style="padding:15px;">
+        <p id="alert-modal-text"></p>
+      </div>
+      <div class="modal-footer md-ns-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<!-- //alert modal content -->
+
+
+<!-- link share content -->
+<div id="link-copy-modal" class="modal fade">
+  <div class="modal-dialog" style="width: 400px;">
+    <div class="modal-content">
+      <div class="modal-header md-ns-color-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">아래의 URL을 복사(Ctrl+C)하여 원하는 곳에 붙여넣기(Ctrl+V)하세요.</h4>
+      </div>
+      <div class="modal-body" style="padding:15px;">
+		<p><input type="text" id="share-link-url" onClick="this.select();"></p>
+		<br>
+		<br>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+
+
+<div class="modal fade" id="main-moreShop">
+	<ul class="tb-more-shop">
+		<li>
+			<a href="http://naver.com" target="_blank">
+				<img src="./@resources/img/shopicon2.png"/>
+				<p class="">공식 브랜드샵</p>
+			</a>
+		</li>
+		<li class="last">
+			<a href="https://www.instagram.com/pepnbirr" target="_blank">
+				<img src="./@resources/img/instarlogo.png"/>
+				<p class="">공식 인스타그램</p>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="modal fade " id="more-search-modal" >
+	<div class="modal-dialog" style="margin-top: 0; width: 100%;">
+		<div class="search_box" >
+			<form id="hashtag-search-form">
+				<a id="btnSch" onClick="javascript:hashTagSearch();"><img src="./@resources/img/search.png"/></a>
+				<input type="text" placeholder="해시태그로 상품을 검색하세요!" id="inputSch" value=""/>
+			</form>
+			<ul class="inst_link">
+				<li class="sch_btn1"><a href="#"><img src="./@resources/img/home.png" data-toggle="tooltip" title="Home"/></a></li>
+
+				<li class="sch_btn2"><a href="#"><img src="./@resources/img/mylike.png" data-toggle="tooltip" title="My Like"/></a></li>
+
+
+				<li class="sch_btn3"><a href="#"><img src="./@resources/img/view.png" data-toggle="tooltip" title="Recent View"/></a></li>
+			</ul>
+		</div><!-- //search_box -->
+	</div>
+</div>
+<div class="moreSch_close" data-dismiss="modal">
+	<img src="./@resources/img/more_close.png"/>
+</div>
+<div id="banner-popup">
+	<div class="popup-inside-d">
+		<div class="swiper-container swiper-custom-c">
+		    <div class="swiper-wrapper">
+		        		    </div>
+		     <!-- Add Arrows -->
+		            	<div class="swiper-pagination"></div>
+		</div>
+		<div style="margin: 0 auto; max-width: 340px; height: 40px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; line-height: 40px;">
+		  <div class="popup-close-text">오늘 하루 열지 않음</div>
+		  <div class="popup-close-text"><input type="checkbox" onClick="eventModalCloseForOneDay();" style="margin-top: 13px;"></div>
+		  <div class="popup-close-r" id="close-event-modal">닫기 <i class="fa fa-times" aria-hidden="true"></i></a></div>
+		</div>
+	</div>
+</div>
+
+<!-- <script src="./@resources/js/jquery-1.11.3.min.js"></script> -->
+<script src="./@resources/js/jquery.timeago.js"></script>
+<script src="./@resources/js/jquery.mCustomScrollbar.concat.min.js?time=20160923"></script>
+<script src="./@resources/js/common.js?time=201"></script>
+<script src="./@resources/js/jquery.color.js"></script>
+<script src="./@resources/js/func.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://vjs.zencdn.net/5.10.8/video.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./@resources/js/statistics.js?time=20160923"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-78428718-1', 'auto');
+ga('send', 'pageview');
+</script></body>
+</html>
+

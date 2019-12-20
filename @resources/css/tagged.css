@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+#goods-image {position: relative;}
+
+/*
+.tagged-item-point {
+	width:24px;
+	height:24px;
+	font-family:Arial;
+	font-size:14px;
+	position:absolute;
+    background-color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    display: block;
+    text-align:center;
+    padding-top:1.5px;
+    /*padding: 1.5px 7.5px;
+    z-index: 1000;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    color: #3e3e3e;
+    -webkit-box-shadow: 0 4px 0 #353535;
+    -moz-box-shadow: 0 4px 0 #353535;
+    box-shadow: 0 4px 0 #353535;
+    font-weight: 700;
+}
+*/
+
+.tagged-item-point{ -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%; color:#3e3e3e; -webkit-box-shadow:0 1px 4px #353535; -moz-box-shadow:0 1px 4px #353535; box-shadow:0 1px 4px #353535; font-weight:700;  padding-top:1.5px; text-align:center; z-index:1000;  width:24px; height:24px; font-family:'Ubuntu','Arial'; font-size:13px; position:absolute; background-color:rgba(255,255,255,0.8); cursor:pointer; display:block; }
+
+.svg-line {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	pointer-events: none;
+}
+
+/*
+.tagged-number {
+	width:24px;
+	height:24px;
+	font-family:Arial;
+	font-size:14px;
+	position:absolute;
+    background-color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    display: block;
+    padding: 1.5px 7.5px;
+    z-index: 1000;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    color: #3e3e3e;
+    -webkit-box-shadow: 0 4px 0 #353535;
+    -moz-box-shadow: 0 4px 0 #353535;
+    box-shadow: 0 4px 0 #353535;
+    font-weight: 700;
+}
+
+#instagram-image {
+   width: 100%;
+   cursor: crosshair;
+}
+
+
+#instagram-image {
+    cursor: url('../goods/mouseIcon.cur'), default;
+}
+
+
+
+.tagged-line {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	pointer-events: none;
+	
+}
+
+#instagram-image-cover {position: relative; width: 100%;}
+*/
